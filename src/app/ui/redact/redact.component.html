@@ -1,0 +1,25 @@
+
+<form style="margin:5%"  [formGroup]="myForm1">
+    <h3>Редактирование записей</h3>
+    <input class="form-control" type="number" placeholder="Введите id сотрудника" name="idnew" formControlName="idnew"/>
+    <input class="form-control" type="text" placeholder="Введите измененное имя"  name="namenew" formControlName="namenew"/>
+    <input class="form-control" type="text" placeholder="Введите измененную фамилию" name="surnamenew" formControlName="surnamenew"/>
+     <input 
+      pattern="[0-9]{10}"
+      type="text"
+      class="form-control"
+      placeholder="Номер телефона"
+      formControlName="phonenew"
+       [textMask]="{mask: mask1}"
+    />
+    <select class="custom-select" name="type" formControlName="type">
+      <option [ngValue]="myWorkerType.programmer">Программист</option>
+      <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+      <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+      <option [ngValue]="myWorkerType.manager">Менеджер</option>
+    </select>
+    <button class="form-control" [disabled]="myForm1.controls['namenew'].invalid ||myForm1.controls['surnamenew'].invalid ||myForm1.controls['idnew'].invalid" (click)="onRedactWorker()">Редактировать</button>
+<div class="alert alert-danger" *ngIf="myForm1.controls['idnew'].invalid && myForm1.controls['idnew'].touched">Не указано имя</div> 
+<div class="alert alert-danger" *ngIf="myForm1.controls['namenew'].invalid && myForm1.controls['namenew'].touched">Не указано имя</div> 
+ <div class="alert alert-danger" *ngIf="myForm1.controls['surnamenew'].invalid && myForm1.controls['surnamenew'].touched">Не указана фамилия</div> 
+  </form>
