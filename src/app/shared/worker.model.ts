@@ -2,20 +2,20 @@ export interface MyWorker {
   id?: number;
   name: string;
   surname: string;
+  patr:string;
+  email:string;
+  bd: string;
   type: number;
   phone: string;
 }
 
 export enum MyWorkerType {
   programmer,
-  designer,
-  copywriter,
-  manager,
+  sale,
+  del,
+  law,
 }
 
 export let MyWorkersDatabase: MyWorker[] = [
-  { id: 1, name: 'Иван', surname: 'Иванов', type: 0, phone: '89828922003'},
-  { id: 2, name: 'Петр', surname: 'Петров', type: 1,  phone: '89828922003'},
-  { id: 3, name: 'Сидор', surname: 'Сидоров', type: 2,  phone: '89828922003' },
-  { id: 4, name: 'Василий', surname: 'Васильев', type: 3,  phone: '89828922003' },
+
 ];

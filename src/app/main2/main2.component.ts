@@ -1,18 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   MyWorker,
   MyWorkersDatabase,
   MyWorkerType,
-} from './shared/worker.model';
-import { WorkersserService } from './shared/workersser.service';
-
+} from 'src/app/shared/worker.model';
+import { WorkersserService } from 'src/app/shared/workersser.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-main2',
+  templateUrl: './main2.component.html',
+  styleUrls: ['./main2.component.css']
 })
-export class AppComponent {
+export class Main2Component implements OnInit {
   title = 'Список сотрудников';
   workers: MyWorker[]=[];
   myWorkerType = MyWorkerType;
@@ -34,6 +33,14 @@ export class AppComponent {
 
   onDeleteById(id: number) {
     let index = this.workers.findIndex((worker) => worker.id === id);
+    let index1:string = String(this.workers[index].id);
+    if (index !== -1) {
+      this.WorkersserService.delWorkers(index1).subscribe(()=>this.getData(), (err) => console.log(err));
+    }
+  }
+
+  onDeleteByIdR(deleteWorker) {
+    let index = this.workers.findIndex((worker) => worker.id === deleteWorker.id);
     let index1:string = String(this.workers[index].id);
     if (index !== -1) {
       this.WorkersserService.delWorkers(index1).subscribe(()=>this.getData(), (err) => console.log(err));

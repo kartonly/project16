@@ -4,6 +4,7 @@
     <input class="form-control" type="number" placeholder="Введите id сотрудника" name="idnew" formControlName="idnew"/>
     <input class="form-control" type="text" placeholder="Введите измененное имя"  name="namenew" formControlName="namenew"/>
     <input class="form-control" type="text" placeholder="Введите измененную фамилию" name="surnamenew" formControlName="surnamenew"/>
+     <input class="form-control" type="text" placeholder="Введите измененное отчество" name="patrnew" formControlName="patrnew"/>
      <input 
       pattern="[0-9]{10}"
       type="text"
@@ -12,13 +13,20 @@
       formControlName="phonenew"
        [textMask]="{mask: mask1}"
     />
+     <input class="form-control" type="email" placeholder="Введите email" name="emailnew" formControlName="emailnew"/>
+      <input class="form-control" type="date" placeholder="Введите дату рождения" name="bdnew" formControlName="bdnew"/>
     <select class="custom-select" name="type" formControlName="type">
-      <option [ngValue]="myWorkerType.programmer">Программист</option>
-      <option [ngValue]="myWorkerType.designer">Дизайнер</option>
-      <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
-      <option [ngValue]="myWorkerType.manager">Менеджер</option>
+      <option [ngValue]="myWorkerType.programmer">Программист(IT отдел)</option>
+      <option [ngValue]="myWorkerType.sale">Отдел продаж</option>
+      <option [ngValue]="myWorkerType.del">Отдел доставки</option>
+      <option [ngValue]="myWorkerType.law">Юрист</option>
     </select>
-    <button class="form-control" [disabled]="myForm1.controls['namenew'].invalid ||myForm1.controls['surnamenew'].invalid ||myForm1.controls['idnew'].invalid" (click)="onRedactWorker()">Редактировать</button>
+    <h6 class="mb-3 mt-3" style="color: grey;">Для удаления сотрудника введите его id в соответствующее поле</h6>
+    <div>
+    <button [disabled]="myForm1.controls['idnew'].invalid" class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker()">
+                Удалить
+              </button>
+    <button class="btn btn-sm btn-success" [disabled]="myForm1.controls['namenew'].invalid ||myForm1.controls['surnamenew'].invalid ||myForm1.controls['idnew'].invalid" (click)="onRedactWorker()">Редактировать</button></div>
 <div class="alert alert-danger" *ngIf="myForm1.controls['idnew'].invalid && myForm1.controls['idnew'].touched">Не указано имя</div> 
 <div class="alert alert-danger" *ngIf="myForm1.controls['namenew'].invalid && myForm1.controls['namenew'].touched">Не указано имя</div> 
  <div class="alert alert-danger" *ngIf="myForm1.controls['surnamenew'].invalid && myForm1.controls['surnamenew'].touched">Не указана фамилия</div> 

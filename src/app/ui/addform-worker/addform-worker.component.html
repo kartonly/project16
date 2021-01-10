@@ -1,3 +1,5 @@
+<div class="container">
+  <div class="row mb-3" style="text-align: center;">
 <form  [formGroup]="myForm">
 <div class="row mb-3">
   <div class="col-12">
@@ -19,6 +21,14 @@
       formControlName="surname"
     />
   </div>
+   <div class="col-4">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Отчество"
+      formControlName="patr"
+    />
+  </div>
   <div class="col-4">
    <input 
       pattern="[0-9]{10}"
@@ -29,12 +39,28 @@
       [textMask]="{mask: mask}"
     />
   </div>
+   <div class="col-4">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="email"
+      formControlName="email"
+    />
+  </div>
+  <div class="col-4">
+    <input
+      type="date"
+      class="form-control"
+      placeholder="bd"
+      formControlName="bd"
+    />
+  </div>
   <div class="col-4">
     <select class="custom-select" formControlName="type">
-      <option [ngValue]="myWorkerType.programmer">Программист</option>
-      <option [ngValue]="myWorkerType.designer">Дизайнер</option>
-      <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
-      <option [ngValue]="myWorkerType.manager">Менеджер</option>
+      <option [ngValue]="myWorkerType.programmer">Программист(IT отдел)</option>
+      <option [ngValue]="myWorkerType.sale">Отдел продаж</option>
+      <option [ngValue]="myWorkerType.del">Отдел доставки</option>
+      <option [ngValue]="myWorkerType.law">Юрист</option>
     </select>
   </div>
   <div class="col-12 mt-1">
@@ -46,3 +72,5 @@
  <div class="alert alert-danger" *ngIf="myForm.controls['name'].invalid && myForm.controls['name'].touched">Не указано имя</div> 
  <div class="alert alert-danger" *ngIf="myForm.controls['surname'].invalid && myForm.controls['surname'].touched">Не указана фамилия</div> 
 </form>
+</div>
+</div>

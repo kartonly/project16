@@ -14,25 +14,35 @@ export class RedactComponent implements OnInit {
   myForm1 : FormGroup = new FormGroup({
     "idnew": new FormControl("", Validators.required),
     "namenew": new FormControl("", Validators.required),
+    "patrnew": new FormControl("", Validators.required),
     "surnamenew": new FormControl("", [
                 Validators.required, 
     ]),
     "type": new FormControl(0, Validators.required),
+    "emailnew": new FormControl('@mail.ru', Validators.required),
+    "bdnew": new FormControl(0, Validators.required),
     "phonenew": new FormControl("", Validators.pattern("[0-9]{10}")) 
 });
 
   @Output() RedactWorker = new EventEmitter<object>();
+  @Output() deleteWorker = new EventEmitter<object>();
+
 
   constructor() { }
 
   ngOnInit(): void {}
-  
   onRedactWorker() {
     this.RedactWorker.emit({
       id: this.myForm1.controls["idnew"].value,
       name: this.myForm1.controls["namenew"].value,
       surname: this.myForm1.controls["surnamenew"].value,
       type: this.myForm1.controls["type"].value,
+      patr: this.myForm1.controls["patrnew"].value,
+      bd: this.myForm1.controls["bdnew"].value,
+      email: this.myForm1.controls["emailnew"].value,
       phone: this.myForm1.controls["phonenew"].value });
   }
+  onDeleteWorker() {
+    this.deleteWorker.emit({id: this.myForm1.controls["idnew"].value});
+  }  
 }

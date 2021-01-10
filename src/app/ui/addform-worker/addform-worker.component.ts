@@ -17,6 +17,11 @@ export class AddformWorkerComponent implements OnInit {
     "surname": new FormControl("", [
                 Validators.required, 
     ]),
+    "patr": new FormControl("", [
+      Validators.required, 
+]),
+    "email": new FormControl("", Validators.required),
+    "bd": new FormControl("", Validators.required),
     "type": new FormControl(0, Validators.required),
     "phone": new FormControl("", Validators.pattern("[0-9]{10}")) 
 });
@@ -31,6 +36,9 @@ export class AddformWorkerComponent implements OnInit {
       name: this.myForm.controls["name"].value,
       surname: this.myForm.controls["surname"].value,
       type: this.myForm.controls["type"].value,
+      patr: this.myForm.controls["patr"].value,
+      bd: this.myForm.controls["bd"].value,
+      email: this.myForm.controls["email"].value,
       phone: this.myForm.controls["phone"].value });
   }
 }
